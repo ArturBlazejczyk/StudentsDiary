@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace StudentsDiary
 {
-    internal class Student
+    public class Student
     {
+        public string FirstName;
     }
 }

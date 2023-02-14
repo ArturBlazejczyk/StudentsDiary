@@ -20,7 +20,6 @@ namespace StudentsDiary
         public Main()
         {
             InitializeComponent();
-
         }
 
         public void SerializeToFile(List<Student> students)
