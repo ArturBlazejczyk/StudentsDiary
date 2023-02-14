@@ -17,16 +17,6 @@ namespace StudentsDiary
         {
             InitializeComponent();
 
-            var pathToDataBase = $@"{System.IO.Path.GetDirectoryName(Application.ExecutablePath)}\..\DataBase.txt";
-
-            //if (!File.Exists(pathToDataBase))
-            //File.Create(pathToDataBase);
-
-            //File.WriteAllText(pathToDataBase, "Zostań programisto");
-            File.AppendAllText(pathToDataBase, "Akademia\n");
-
-            var text  = File.ReadAllText(pathToDataBase);
-            MessageBox.Show(text);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
