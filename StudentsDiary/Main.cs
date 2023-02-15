@@ -60,7 +60,15 @@ namespace StudentsDiary
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (dgvDiary.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Zaznacz ucznia, którego chcesz edytować");
+                return;
+            }
 
+            var addEditStudent = new AddEditStudent(
+                Convert.ToInt32(dgvDiary.SelectedRows[0].Cells[0].Value));
+            addEditStudent.ShowDialog();           
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
