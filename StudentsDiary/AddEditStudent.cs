@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace StudentsDiary
@@ -16,9 +17,33 @@ namespace StudentsDiary
     {
         private string _filePath =
             Path.Combine(Environment.CurrentDirectory, "students.txt");
-        public AddEditStudent()
+        public AddEditStudent(int id = 0)
         {
             InitializeComponent();
+
+            if(id != 0)
+            {
+                var students = DeserializeFromFile();
+                var student = students.FirstOrDefault(x => x.Id == id);
+
+                if(student == null) 
+                    throw new Exception("Brak ucznia o podanym ID");
+
+                tbId.Text = student.Id.ToString();
+                tbFirstName.Text = student.FirstName;
+                tbLastName.Text = student.LastName;
+                tbMath.Text =   student.Math;
+                tbTechnology.Text = student.Technology;
+                tbPhysics.Text = student.Physics;
+                tbPolishLang.Text = student.PolishLang;
+                tbForeignLang.Text = student.ForeignLang;
+                rtbComments.Text = student.Comments;
+
+                students.Add(student);
+
+                SerializeToFile(students);
+                Close();
+            }
         }
 
         public void SerializeToFile(List<Student> students)
@@ -66,7 +91,7 @@ namespace StudentsDiary
                 Technology = tbTechnology.Text,
                 Physics = tbPhysics.Text,
                 PolishLang = tbPolishLang.Text,
-                ForeignLang = TbForeignLang.Text,
+                ForeignLang = tbForeignLang.Text,
                 Comments = rtbComments.Text,
             };
 

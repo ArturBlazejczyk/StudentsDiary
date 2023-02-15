@@ -43,7 +43,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tbPolishLang = new System.Windows.Forms.TextBox();
             this.lb = new System.Windows.Forms.Label();
-            this.TbForeignLang = new System.Windows.Forms.TextBox();
+            this.tbForeignLang = new System.Windows.Forms.TextBox();
             this.rtbComments = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -174,10 +174,10 @@
             // 
             // TbForeignLang
             // 
-            this.TbForeignLang.Location = new System.Drawing.Point(131, 216);
-            this.TbForeignLang.Name = "TbForeignLang";
-            this.TbForeignLang.Size = new System.Drawing.Size(225, 20);
-            this.TbForeignLang.TabIndex = 14;
+            this.tbForeignLang.Location = new System.Drawing.Point(131, 216);
+            this.tbForeignLang.Name = "TbForeignLang";
+            this.tbForeignLang.Size = new System.Drawing.Size(225, 20);
+            this.tbForeignLang.TabIndex = 14;
             // 
             // rtbComments
             // 
@@ -226,7 +226,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.rtbComments);
             this.Controls.Add(this.lb);
-            this.Controls.Add(this.TbForeignLang);
+            this.Controls.Add(this.tbForeignLang);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tbPolishLang);
             this.Controls.Add(this.label5);
@@ -265,7 +265,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbPolishLang;
         private System.Windows.Forms.Label lb;
-        private System.Windows.Forms.TextBox TbForeignLang;
+        private System.Windows.Forms.TextBox tbForeignLang;
         private System.Windows.Forms.RichTextBox rtbComments;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnCancel;
