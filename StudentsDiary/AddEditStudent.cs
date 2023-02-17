@@ -42,6 +42,8 @@ namespace StudentsDiary
                 tbForeignLang.Text = student.ForeignLang;
                 rtbComments.Text = student.Comments;
             }
+
+            tbFirstName.Select();
         }
 
         public void SerializeToFile(List<Student> students)
