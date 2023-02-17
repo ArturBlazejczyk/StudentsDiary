@@ -1,34 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using System.Xml.Serialization;
 
 namespace StudentsDiary
 {
     public partial class Main : Form
     {
-        private string _filePath = 
-            Path.Combine(Environment.CurrentDirectory, "students.txt");
+        private FileHelper<List<Student>> _fileHelper =
+            new FileHelper<List<Student>>(Program.FilePath);
 
         public Main()
         {
             InitializeComponent();
             RefreshDiary();
-            SetColumnsHeaders();
-          
+            SetColumnsHeaders();         
         }
 
         private void RefreshDiary() 
         {
-            var fileHelper = new FileHelper(_filePath);
-            var students = fileHelper.DeserializeFromFile();
+            var students = _fileHelper.DeserializeFromFile();
             dgvDiary.DataSource = students;
         }
 
@@ -83,12 +73,17 @@ namespace StudentsDiary
 
             if (confirmDelete == DialogResult.OK)
             {
-                var fileHelper = new FileHelper(_filePath);
-                var students = fileHelper.DeserializeFromFile();
-                students.RemoveAll(x => x.Id == Convert.ToInt32(selectedStudent.Cells[0].Value));
-                fileHelper.SerializeToFile(students);
-                dgvDiary.DataSource = students;
+                StudentDelete(selectedStudent);
+                RefreshDiary();
             }
+        }
+
+        private void StudentDelete(DataGridViewRow selectedStudent)
+        {
+            var students = _fileHelper.DeserializeFromFile();
+            students.RemoveAll(x => x.Id == Convert.ToInt32(selectedStudent.Cells[0].Value));
+            _fileHelper.SerializeToFile(students);
+            dgvDiary.DataSource = students;
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

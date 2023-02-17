@@ -1,70 +1,73 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using System.Xml.Serialization;
 
 namespace StudentsDiary
 {
     public partial class AddEditStudent : Form
     {
         private int _studentId;
-        private string _filePath =
-            Path.Combine(Environment.CurrentDirectory, "students.txt");
+        private Student _student;
+
+        private FileHelper<List<Student>> _fileHelper = 
+            new FileHelper<List<Student>>(Program.FilePath);
         public AddEditStudent(int id = 0)
         {
             InitializeComponent();
 
             _studentId = id;
 
-            if(id != 0)
+            GetStudentData();
+            tbFirstName.Select();
+        }
+
+        private void GetStudentData()
+        {
+            if (_studentId != 0)
             {
-                var fileHelper = new FileHelper(_filePath);
                 Text = "Edytowanie danych ucznia";
 
-                var students = fileHelper.DeserializeFromFile();
-                var student = students.FirstOrDefault(x => x.Id == id);
+                var students = _fileHelper.DeserializeFromFile();
+                _student = students.FirstOrDefault(x => x.Id == _studentId);
 
-                if(student == null) 
+                if (_student == null)
                     throw new Exception("Brak ucznia o podanym ID");
 
-                tbId.Text = student.Id.ToString();
-                tbFirstName.Text = student.FirstName;
-                tbLastName.Text = student.LastName;
-                tbMath.Text =   student.Math;
-                tbTechnology.Text = student.Technology;
-                tbPhysics.Text = student.Physics;
-                tbPolishLang.Text = student.PolishLang;
-                tbForeignLang.Text = student.ForeignLang;
-                rtbComments.Text = student.Comments;
+                FillTextBoxes();
             }
+        }
 
-            tbFirstName.Select();
+        private void FillTextBoxes()
+        {
+            tbId.Text = _student.Id.ToString();
+            tbFirstName.Text = _student.FirstName;
+            tbLastName.Text = _student.LastName;
+            tbMath.Text = _student.Math;
+            tbTechnology.Text = _student.Technology;
+            tbPhysics.Text = _student.Physics;
+            tbPolishLang.Text = _student.PolishLang;
+            tbForeignLang.Text = _student.ForeignLang;
+            rtbComments.Text = _student.Comments;
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            var fileHelper = new FileHelper(_filePath);
-            var students = fileHelper.DeserializeFromFile();
+            var students = _fileHelper.DeserializeFromFile();
 
             if (_studentId != 0)
                 students.RemoveAll(x => x.Id == _studentId);
             else
-            {
-                var studentWithHighestId = students
-                    .OrderByDescending(x => x.Id).FirstOrDefault();
+                AsignId(students);
 
-                _studentId = studentWithHighestId == null ?
-                    1 : studentWithHighestId.Id + 1;
-            }
+            AddNewUserToList(students);
+            _fileHelper.SerializeToFile(students);
+            Close();
+        }
 
+        private void AddNewUserToList(List<Student> students)
+        {
             var student = new Student
             {
                 Id = _studentId,
@@ -79,9 +82,15 @@ namespace StudentsDiary
             };
 
             students.Add(student);
+        }
 
-            fileHelper.SerializeToFile(students);
-            Close();
+        private void AsignId(List<Student> students)
+        {
+            var studentWithHighestId = students
+                    .OrderByDescending(x => x.Id).FirstOrDefault();
+
+            _studentId = studentWithHighestId == null ?
+                1 : studentWithHighestId.Id + 1;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
