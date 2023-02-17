@@ -95,8 +95,6 @@ namespace StudentsDiary
                 SerializeToFile(students);
                 dgvDiary.DataSource= students;
             }
-            else
-                return;
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
