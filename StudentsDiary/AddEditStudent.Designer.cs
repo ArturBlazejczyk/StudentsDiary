@@ -172,10 +172,10 @@
             this.lb.TabIndex = 15;
             this.lb.Text = "Jęz. obcy:";
             // 
-            // TbForeignLang
+            // tbForeignLang
             // 
             this.tbForeignLang.Location = new System.Drawing.Point(131, 216);
-            this.tbForeignLang.Name = "TbForeignLang";
+            this.tbForeignLang.Name = "tbForeignLang";
             this.tbForeignLang.Size = new System.Drawing.Size(225, 20);
             this.tbForeignLang.TabIndex = 14;
             // 
@@ -241,8 +241,13 @@
             this.Controls.Add(this.tbFirstName);
             this.Controls.Add(this.lbID);
             this.Controls.Add(this.tbId);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(399, 456);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(399, 456);
             this.Name = "AddEditStudent";
-            this.Text = "AddEditStudent";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Dodawanie nowego ucznia";
             this.ResumeLayout(false);
             this.PerformLayout();
 
