@@ -65,10 +65,13 @@ namespace StudentsDiary
                 MessageBox.Show("Zaznacz ucznia, którego chcesz edytować");
                 return;
             }
+            else
+            {
+                var addEditStudent = new AddEditStudent(
+                    Convert.ToInt32(dgvDiary.SelectedRows[0].Cells[0].Value));
 
-            var addEditStudent = new AddEditStudent(
-                Convert.ToInt32(dgvDiary.SelectedRows[0].Cells[0].Value));
-            addEditStudent.ShowDialog();           
+                addEditStudent.ShowDialog();
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

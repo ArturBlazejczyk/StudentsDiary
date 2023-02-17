@@ -21,6 +21,7 @@ namespace StudentsDiary
         public AddEditStudent(int id = 0)
         {
             InitializeComponent();
+            
             _studentId = id;
 
             if(id != 0)
@@ -40,11 +41,6 @@ namespace StudentsDiary
                 tbPolishLang.Text = student.PolishLang;
                 tbForeignLang.Text = student.ForeignLang;
                 rtbComments.Text = student.Comments;
-
-                students.Add(student);
-
-                SerializeToFile(students);
-                Close();
             }
         }
 
@@ -90,7 +86,7 @@ namespace StudentsDiary
                     1 : studentWithHighestId.Id + 1;
             }
 
-            var student = new Student()
+            var student = new Student
             {
                 Id = _studentId,
                 FirstName = tbFirstName.Text,
