@@ -23,7 +23,7 @@ namespace StudentsDiary
             tbFirstName.Select();
         }
 
-        private void GetStudentData()
+        public void GetStudentData()
         {
             if (_studentId != 0)
             {
@@ -63,6 +63,7 @@ namespace StudentsDiary
 
             AddNewUserToList(students);
             _fileHelper.SerializeToFile(students);
+
             Close();
         }
 
