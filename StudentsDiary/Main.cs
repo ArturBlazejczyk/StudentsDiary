@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudentsDiary.Properties;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -9,14 +10,30 @@ namespace StudentsDiary
         private FileHelper<List<Student>> _fileHelper =
             new FileHelper<List<Student>>(Program.FilePath);
 
+        public bool IsMaximize
+        {
+            get
+            {
+                return Settings.Default.IsMaximize;
+            }
+            set
+            {
+                Settings.Default.IsMaximize = value;
+            }
+        }
+
         public Main()
         {
             InitializeComponent();
             RefreshDiary();
-            SetColumnsHeaders();         
+
+            SetColumnsHeaders();
+
+            if (IsMaximize)
+                WindowState = FormWindowState.Maximized;
         }
 
-        private void RefreshDiary() 
+        private void RefreshDiary()
         {
             var students = _fileHelper.DeserializeFromFile();
             dgvDiary.DataSource = students;
@@ -61,8 +78,6 @@ namespace StudentsDiary
                 addEditStudent.FormClosing += AddEditStudent_FormClosing;
                 addEditStudent.ShowDialog();
             }
-
-            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -76,7 +91,7 @@ namespace StudentsDiary
             var selectedStudent = dgvDiary.SelectedRows[0];
 
             var confirmDelete = MessageBox.Show($"Czy na pewno chcesz usunąć ucznia {selectedStudent.Cells[1].Value.ToString().Trim()} {selectedStudent.Cells[2].Value.ToString().Trim()}?",
-              "Usuwanie ucznia", 
+              "Usuwanie ucznia",
               MessageBoxButtons.OKCancel);
 
             if (confirmDelete == DialogResult.OK)
@@ -97,6 +112,16 @@ namespace StudentsDiary
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             RefreshDiary();
+        }
+
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (WindowState == FormWindowState.Maximized)
+                IsMaximize = true;
+            else
+                IsMaximize = false;
+
+            Settings.Default.Save();
         }
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StudentsDiary
@@ -11,7 +13,7 @@ namespace StudentsDiary
         private int _studentId;
         private Student _student;
 
-        private FileHelper<List<Student>> _fileHelper = 
+        private FileHelper<List<Student>> _fileHelper =
             new FileHelper<List<Student>>(Program.FilePath);
         public AddEditStudent(int id = 0)
         {
