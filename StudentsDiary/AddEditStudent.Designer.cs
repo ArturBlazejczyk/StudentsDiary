@@ -249,6 +249,8 @@
             "4",
             "5"});
             this.cBoxGroupID.Location = new System.Drawing.Point(131, 262);
+            this.cBoxGroupID.MaximumSize = new System.Drawing.Size(121, 0);
+            this.cBoxGroupID.MinimumSize = new System.Drawing.Size(121, 0);
             this.cBoxGroupID.Name = "cBoxGroupID";
             this.cBoxGroupID.Size = new System.Drawing.Size(121, 21);
             this.cBoxGroupID.TabIndex = 22;
