@@ -18,5 +18,6 @@ namespace StudentsDiary
         public string PolishLang { get; set; }
         public string ForeignLang { get; set; }
         public bool AdditionalClasses { get; set; }
+        public string GroupId { get; set; }
     }
 }

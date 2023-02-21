@@ -53,6 +53,7 @@ namespace StudentsDiary
             tbForeignLang.Text = _student.ForeignLang;
             rtbComments.Text = _student.Comments;
             cbAdditionalClasses.Checked = _student.AdditionalClasses;
+            cBoxGroupID.Text = _student.GroupId;
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -84,6 +85,7 @@ namespace StudentsDiary
                 ForeignLang = tbForeignLang.Text,
                 Comments = rtbComments.Text,
                 AdditionalClasses = cbAdditionalClasses.Checked,
+                GroupId = cBoxGroupID.Text,
             };
 
             students.Add(student);
