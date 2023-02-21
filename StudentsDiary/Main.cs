@@ -51,6 +51,7 @@ namespace StudentsDiary
             dgvDiary.Columns[7].HeaderText = "Jęz. polski";
             dgvDiary.Columns[8].HeaderText = "Jęz. obcy";
             dgvDiary.Columns[9].HeaderText = "Zaj. dodatkowe";
+            dgvDiary.Columns[10].HeaderText = "Grupa";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -124,5 +125,33 @@ namespace StudentsDiary
 
             Settings.Default.Save();
         }
+
+        private void cBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var students = _fileHelper.DeserializeFromFile();
+            dgvDiary.DataSource = students;
+            var filteredStudents = new List<Student>();
+            var groupId = cBoxFilter.Text;
+
+            ShowStudentsFromGroup(students, filteredStudents, groupId);
+
+            if(groupId != "Wszyscy")
+                dgvDiary.DataSource = filteredStudents;
+
+        }
+
+        private List<Student> ShowStudentsFromGroup(List<Student> students, List<Student> filteredStudents, string groupId)
+        {
+            foreach (var student in students)
+            {
+                if (student.GroupId == groupId)
+                    filteredStudents.Add(student);
+            }
+            return filteredStudents;
+        }
+
     }
+
+
 }
+

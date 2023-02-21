@@ -33,6 +33,8 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.dgvDiary = new System.Windows.Forms.DataGridView();
+            this.cBoxFilter = new System.Windows.Forms.ComboBox();
+            this.filterLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiary)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,12 +98,40 @@
             this.dgvDiary.Size = new System.Drawing.Size(1019, 518);
             this.dgvDiary.TabIndex = 4;
             // 
+            // cBoxFilter
+            // 
+            this.cBoxFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cBoxFilter.FormattingEnabled = true;
+            this.cBoxFilter.Items.AddRange(new object[] {
+            "Wszyscy",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.cBoxFilter.Location = new System.Drawing.Point(910, 14);
+            this.cBoxFilter.Name = "cBoxFilter";
+            this.cBoxFilter.Size = new System.Drawing.Size(121, 21);
+            this.cBoxFilter.TabIndex = 5;
+            this.cBoxFilter.SelectedIndexChanged += new System.EventHandler(this.cBoxFilter_SelectedIndexChanged);
+            // 
+            // filterLabel
+            // 
+            this.filterLabel.AutoSize = true;
+            this.filterLabel.Location = new System.Drawing.Point(821, 17);
+            this.filterLabel.Name = "filterLabel";
+            this.filterLabel.Size = new System.Drawing.Size(83, 13);
+            this.filterLabel.TabIndex = 6;
+            this.filterLabel.Text = "Filtruj wg. grupy:";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1043, 571);
+            this.Controls.Add(this.filterLabel);
+            this.Controls.Add(this.cBoxFilter);
             this.Controls.Add(this.dgvDiary);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnDelete);
@@ -112,6 +142,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiary)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -122,6 +153,8 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.DataGridView dgvDiary;
+        private System.Windows.Forms.ComboBox cBoxFilter;
+        private System.Windows.Forms.Label filterLabel;
     }
 }
 
