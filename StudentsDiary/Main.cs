@@ -135,7 +135,7 @@ namespace StudentsDiary
 
             ShowStudentsFromGroup(students, filteredStudents, groupId);
 
-            if(groupId != "Wszyscy")
+            if (groupId != "Wszyscy")
                 dgvDiary.DataSource = filteredStudents;
 
         }
