@@ -19,6 +19,6 @@ namespace StudentsDiary
                 new Group() { Id = 3, Name = "Grupa 3"},
             };
         }
-        
-}
+
+    }
 }

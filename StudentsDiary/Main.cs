@@ -27,7 +27,7 @@ namespace StudentsDiary
         public Main()
         {
             InitializeComponent();
-            
+
             _groups = GroupsHelper.GetGroups("Wszyscy");
             InitGroupsCombobox();
 
@@ -49,16 +49,14 @@ namespace StudentsDiary
         private void RefreshDiary()
         {
             var students = _fileHelper.DeserializeFromFile();
-
             var selectedGroupId = (cmbFilter.SelectedItem as Group).Id;
 
-            if(selectedGroupId != 0)
+            if (selectedGroupId != 0)
                 students = students
                     .Where(x => x.GroupId == selectedGroupId)
                     .ToList();
 
             dgvDiary.DataSource = students;
-
         }
 
         private void SetColumnsHeaders()
@@ -147,9 +145,6 @@ namespace StudentsDiary
 
             Settings.Default.Save();
         }
-
     }
-
-
 }
 

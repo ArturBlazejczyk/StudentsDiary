@@ -13,7 +13,6 @@ namespace StudentsDiary
         private int _studentId;
         private Student _student;
         private List<Group> _groups;
-
         private FileHelper<List<Student>> _fileHelper =
             new FileHelper<List<Student>>(Program.FilePath);
         public AddEditStudent(int id = 0)
@@ -31,8 +30,8 @@ namespace StudentsDiary
         private void InitGroupsCombobox()
         {
             cmbGroup.DataSource = _groups;
-            cmbGroup.DisplayMember= "Name";
-            cmbGroup.ValueMember= "Id";
+            cmbGroup.DisplayMember = "Name";
+            cmbGroup.ValueMember = "Id";
         }
 
         public void GetStudentData()
@@ -77,7 +76,6 @@ namespace StudentsDiary
 
             AddNewUserToList(students);
             _fileHelper.SerializeToFile(students);
-
             Close();
         }
 
@@ -97,7 +95,6 @@ namespace StudentsDiary
                 AdditionalClasses = cbAdditionalClasses.Checked,
                 GroupId = (cmbGroup.SelectedItem as Group).Id,
             };
-
             students.Add(student);
         }
 
