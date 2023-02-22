@@ -1,6 +1,7 @@
 ﻿using StudentsDiary.Properties;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace StudentsDiary
@@ -26,10 +27,11 @@ namespace StudentsDiary
         public Main()
         {
             InitializeComponent();
-            RefreshDiary();
-
+            
             _groups = GroupsHelper.GetGroups("Wszyscy");
             InitGroupsCombobox();
+
+            RefreshDiary();
 
             SetColumnsHeaders();
 
@@ -47,7 +49,16 @@ namespace StudentsDiary
         private void RefreshDiary()
         {
             var students = _fileHelper.DeserializeFromFile();
+
+            var selectedGroupId = (cmbFilter.SelectedItem as Group).Id;
+
+            if(selectedGroupId != 0)
+                students = students
+                    .Where(x => x.GroupId == selectedGroupId)
+                    .ToList();
+
             dgvDiary.DataSource = students;
+
         }
 
         private void SetColumnsHeaders()
