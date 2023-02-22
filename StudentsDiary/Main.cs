@@ -126,30 +126,6 @@ namespace StudentsDiary
             Settings.Default.Save();
         }
 
-        private void cBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var students = _fileHelper.DeserializeFromFile();
-            dgvDiary.DataSource = students;
-            var filteredStudents = new List<Student>();
-            var groupId = cBoxFilter.Text;
-
-            ShowStudentsFromGroup(students, filteredStudents, groupId);
-
-            if (groupId != "Wszyscy")
-                dgvDiary.DataSource = filteredStudents;
-
-        }
-
-        private List<Student> ShowStudentsFromGroup(List<Student> students, List<Student> filteredStudents, string groupId)
-        {
-            foreach (var student in students)
-            {
-                if (student.GroupId == groupId)
-                    filteredStudents.Add(student);
-            }
-            return filteredStudents;
-        }
-
     }
 
 

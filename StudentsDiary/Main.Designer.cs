@@ -102,18 +102,10 @@
             // 
             this.cBoxFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cBoxFilter.FormattingEnabled = true;
-            this.cBoxFilter.Items.AddRange(new object[] {
-            "Wszyscy",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
             this.cBoxFilter.Location = new System.Drawing.Point(910, 14);
             this.cBoxFilter.Name = "cBoxFilter";
             this.cBoxFilter.Size = new System.Drawing.Size(121, 21);
             this.cBoxFilter.TabIndex = 5;
-            this.cBoxFilter.SelectedIndexChanged += new System.EventHandler(this.cBoxFilter_SelectedIndexChanged);
             // 
             // filterLabel
             // 

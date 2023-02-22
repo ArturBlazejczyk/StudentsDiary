@@ -50,8 +50,8 @@
             this.btnConfirm = new System.Windows.Forms.Button();
             this.lbAdditionalClasses = new System.Windows.Forms.Label();
             this.cbAdditionalClasses = new System.Windows.Forms.CheckBox();
-            this.cBoxGroupID = new System.Windows.Forms.ComboBox();
-            this.lbGroupNumber = new System.Windows.Forms.Label();
+            this.cmbGroup = new System.Windows.Forms.ComboBox();
+            this.lbGroup = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tbId
@@ -238,39 +238,39 @@
             this.cbAdditionalClasses.TabIndex = 21;
             this.cbAdditionalClasses.UseVisualStyleBackColor = true;
             // 
-            // cBoxGroupID
+            // cmbGroup
             // 
-            this.cBoxGroupID.FormattingEnabled = true;
-            this.cBoxGroupID.Items.AddRange(new object[] {
+            this.cmbGroup.FormattingEnabled = true;
+            this.cmbGroup.Items.AddRange(new object[] {
             "Wszyscy",
             "1",
             "2",
             "3",
             "4",
             "5"});
-            this.cBoxGroupID.Location = new System.Drawing.Point(131, 262);
-            this.cBoxGroupID.MaximumSize = new System.Drawing.Size(121, 0);
-            this.cBoxGroupID.MinimumSize = new System.Drawing.Size(121, 0);
-            this.cBoxGroupID.Name = "cBoxGroupID";
-            this.cBoxGroupID.Size = new System.Drawing.Size(121, 21);
-            this.cBoxGroupID.TabIndex = 22;
+            this.cmbGroup.Location = new System.Drawing.Point(131, 262);
+            this.cmbGroup.MaximumSize = new System.Drawing.Size(121, 0);
+            this.cmbGroup.MinimumSize = new System.Drawing.Size(121, 0);
+            this.cmbGroup.Name = "cmbGroup";
+            this.cmbGroup.Size = new System.Drawing.Size(121, 21);
+            this.cmbGroup.TabIndex = 22;
             // 
-            // lbGroupNumber
+            // lbGroup
             // 
-            this.lbGroupNumber.AutoSize = true;
-            this.lbGroupNumber.Location = new System.Drawing.Point(29, 265);
-            this.lbGroupNumber.Name = "lbGroupNumber";
-            this.lbGroupNumber.Size = new System.Drawing.Size(39, 13);
-            this.lbGroupNumber.TabIndex = 23;
-            this.lbGroupNumber.Text = "Grupa:";
+            this.lbGroup.AutoSize = true;
+            this.lbGroup.Location = new System.Drawing.Point(29, 265);
+            this.lbGroup.Name = "lbGroup";
+            this.lbGroup.Size = new System.Drawing.Size(39, 13);
+            this.lbGroup.TabIndex = 23;
+            this.lbGroup.Text = "Grupa:";
             // 
             // AddEditStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(381, 461);
-            this.Controls.Add(this.lbGroupNumber);
-            this.Controls.Add(this.cBoxGroupID);
+            this.Controls.Add(this.lbGroup);
+            this.Controls.Add(this.cmbGroup);
             this.Controls.Add(this.cbAdditionalClasses);
             this.Controls.Add(this.lbAdditionalClasses);
             this.Controls.Add(this.btnConfirm);
@@ -327,7 +327,7 @@
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Label lbAdditionalClasses;
         private System.Windows.Forms.CheckBox cbAdditionalClasses;
-        private System.Windows.Forms.ComboBox cBoxGroupID;
-        private System.Windows.Forms.Label lbGroupNumber;
+        private System.Windows.Forms.ComboBox cmbGroup;
+        private System.Windows.Forms.Label lbGroup;
     }
 }

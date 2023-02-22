@@ -12,17 +12,33 @@ namespace StudentsDiary
     {
         private int _studentId;
         private Student _student;
+        private List<Group> _groups;
 
         private FileHelper<List<Student>> _fileHelper =
             new FileHelper<List<Student>>(Program.FilePath);
         public AddEditStudent(int id = 0)
         {
             InitializeComponent();
-
             _studentId = id;
 
+            _groups = new List<Group>()
+            {
+                new Group() {Id = 0, Name = "Brak"},
+                new Group() {Id = 1, Name = "Grupa 1"},
+                new Group() {Id = 2, Name = "Grupa 2"},
+                new Group() {Id = 3, Name = "Grupa 3"},
+            };
+
+            InitGroupsCombobox();
             GetStudentData();
             tbFirstName.Select();
+        }
+
+        private void InitGroupsCombobox()
+        {
+            cmbGroup.DataSource = _groups;
+            cmbGroup.DisplayMember= "Name";
+            cmbGroup.ValueMember= "Id";
         }
 
         public void GetStudentData()
@@ -53,7 +69,7 @@ namespace StudentsDiary
             tbForeignLang.Text = _student.ForeignLang;
             rtbComments.Text = _student.Comments;
             cbAdditionalClasses.Checked = _student.AdditionalClasses;
-            cBoxGroupID.Text = _student.GroupId;
+            cmbGroup.SelectedItem = _groups.FirstOrDefault(x => x.Id == _student.GroupId);
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -85,7 +101,7 @@ namespace StudentsDiary
                 ForeignLang = tbForeignLang.Text,
                 Comments = rtbComments.Text,
                 AdditionalClasses = cbAdditionalClasses.Checked,
-                GroupId = cBoxGroupID.Text,
+                GroupId = (cmbGroup.SelectedItem as Group).Id,
             };
 
             students.Add(student);
