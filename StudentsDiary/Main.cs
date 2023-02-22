@@ -9,6 +9,7 @@ namespace StudentsDiary
     {
         private FileHelper<List<Student>> _fileHelper =
             new FileHelper<List<Student>>(Program.FilePath);
+        private List<Group> _groups;
 
         public bool IsMaximize
         {
@@ -27,10 +28,20 @@ namespace StudentsDiary
             InitializeComponent();
             RefreshDiary();
 
+            _groups = GroupsHelper.GetGroups("Wszyscy");
+            InitGroupsCombobox();
+
             SetColumnsHeaders();
 
             if (IsMaximize)
                 WindowState = FormWindowState.Maximized;
+        }
+
+        private void InitGroupsCombobox()
+        {
+            cmbFilter.DataSource = _groups;
+            cmbFilter.DisplayMember = "Name";
+            cmbFilter.ValueMember = "Id";
         }
 
         private void RefreshDiary()

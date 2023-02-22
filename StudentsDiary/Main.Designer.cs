@@ -33,7 +33,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.dgvDiary = new System.Windows.Forms.DataGridView();
-            this.cBoxFilter = new System.Windows.Forms.ComboBox();
+            this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.filterLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiary)).BeginInit();
             this.SuspendLayout();
@@ -98,14 +98,14 @@
             this.dgvDiary.Size = new System.Drawing.Size(1019, 518);
             this.dgvDiary.TabIndex = 4;
             // 
-            // cBoxFilter
+            // cmbFilter
             // 
-            this.cBoxFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cBoxFilter.FormattingEnabled = true;
-            this.cBoxFilter.Location = new System.Drawing.Point(910, 14);
-            this.cBoxFilter.Name = "cBoxFilter";
-            this.cBoxFilter.Size = new System.Drawing.Size(121, 21);
-            this.cBoxFilter.TabIndex = 5;
+            this.cmbFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbFilter.FormattingEnabled = true;
+            this.cmbFilter.Location = new System.Drawing.Point(910, 14);
+            this.cmbFilter.Name = "cmbFilter";
+            this.cmbFilter.Size = new System.Drawing.Size(121, 21);
+            this.cmbFilter.TabIndex = 5;
             // 
             // filterLabel
             // 
@@ -123,7 +123,7 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1043, 571);
             this.Controls.Add(this.filterLabel);
-            this.Controls.Add(this.cBoxFilter);
+            this.Controls.Add(this.cmbFilter);
             this.Controls.Add(this.dgvDiary);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnDelete);
@@ -145,7 +145,7 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.DataGridView dgvDiary;
-        private System.Windows.Forms.ComboBox cBoxFilter;
+        private System.Windows.Forms.ComboBox cmbFilter;
         private System.Windows.Forms.Label filterLabel;
     }
 }

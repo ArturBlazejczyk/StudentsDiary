@@ -21,15 +21,9 @@ namespace StudentsDiary
             InitializeComponent();
             _studentId = id;
 
-            _groups = new List<Group>()
-            {
-                new Group() {Id = 0, Name = "Brak"},
-                new Group() {Id = 1, Name = "Grupa 1"},
-                new Group() {Id = 2, Name = "Grupa 2"},
-                new Group() {Id = 3, Name = "Grupa 3"},
-            };
-
+            _groups = GroupsHelper.GetGroups("Brak");
             InitGroupsCombobox();
+
             GetStudentData();
             tbFirstName.Select();
         }
